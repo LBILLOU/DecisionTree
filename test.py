@@ -64,13 +64,6 @@ def infoGain(trueBrImp, falseBrImp, currentImp):
     p = float(len(trueBrImp)) / (len(trueBrImp) + len(falseBrImp))
     return currentImp - p * giniImp(trueBrImp) - (1 - p) * giniImp(falseBrImp)
 
-#currentImp = giniImp(sampledf)
-#print 'current Imputiry = ' + str(currentImp)
-#q = Question(targetcol, 'Red')
-#print q
-#true_rows, false_rows = branchsplit(sampledf, q)
-#print infoGain(true_rows, false_rows, currentImp)
-
 def findBestQuestion(dataf):
     bestGain = 0
     bestQuestion = None
@@ -95,7 +88,7 @@ def findBestQuestion(dataf):
 
 class Leaf:
     def __init__(self, dataf):
-        self.predictions= countValues(dataf)
+        self.predictions = countValues(dataf)
 
 class Node:
     def __init__(self, question, trueBranch, falseBranch):
