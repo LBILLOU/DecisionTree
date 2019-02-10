@@ -174,22 +174,44 @@ def buildTree(dataf):
     return Node(question, trueBranch, falseBranch)
 
 print("> Function *** buildTree")
-out = buildTree(impCSV)
+my_tree = buildTree(impCSV)
 print("out --> " + str(out))
 print(type(out))
 
 def printTree(node, spacing = ""):
     if isinstance(node, Leaf):
         print(spacing + "Predict", node.predictions)
-        return    
+        return
     print (spacing + str(node.question))
-
     print (spacing + '--> True:')
     printTree(node.trueBranch, spacing + "  ")
-
     print (spacing + '--> False:')
     printTree(node.falseBranch, spacing + "  ")
 
-
 print("> Function *** printTree")
-printTree(out)
+printTree(my_tree)
+
+def classify(row, node):
+    if isinstance(node, Leaf):
+        return node.predictions
+    if node.question.match(row):
+        return classify(row, node.trueBranch)
+    else:
+        return classify(row, node.falseBranch)
+
+print("> Function *** testTree")
+test = classify(impCSV.loc[2,:].to_frame().transpose(), my_tree)
+print("out --> " + str(test))
+print(type(test))
+
+def printLeaf(counts):
+    total = sum(counts.values()) * 1.0
+    probs = {}
+    for lbl in counts.keys():
+        probs[lbl] = str(int(counts[lbl] / total * 100)) + "%"
+    return probs
+
+filename2 = "testingFruits.csv" # for testing
+impCSV2 = pd.read_csv(filename, header=0)
+for index, row in impCSV2.iterrows():
+    print ("Actual: %s. Predicted: %s " % (row[targetId], printLeaf(classify(row.to_frame().transpose(), my_tree))))
