@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 
-
 def getUserInput(question):
     # Funtion to retrieve input from user by asking an appropriate question
     print('')
@@ -26,7 +25,8 @@ def countValues(dataf, targetId):
 
 
 class Question():
-    def __init__(self, columnId, value):
+    def __init__(self, columnId, value, dataf):
+        self.columnName = list(dataf.columns)[columnId]
         self.columnId = columnId
         self.value = value
 
@@ -35,7 +35,7 @@ class Question():
         if isinstance(self.value, int) or isinstance(self.value, float):
             operator = '>='
         else: operator = '=='
-        return "Is column %s %s %s ?" % (self.columnId, operator, str(self.value))
+        return "Is %s %s %s ?" % (self.columnName, operator, str(self.value))
 
     def match(self, dataf):
         # Function to evaluate dataframe single row with question
@@ -82,7 +82,7 @@ def findBestQuestion(dataf, targetId):
         if col != targetId:
             values = uniqueValues(dataf, col)
             for val in values:
-                question = Question(col, val)
+                question = Question(col, val, dataf)
                 trueRows, falseRows = branchsplit(dataf, question)
 
                 # Skipping branchsplit if it has not divided the dataset
@@ -125,9 +125,9 @@ def printTree(node, spacing = ""):
         print(spacing + "Prediction >", node.predictions)
         return
     print (spacing + str(node.question))
-    print (spacing + 'TRUE')
+    print (spacing + '> YES')
     printTree(node.trueBranch, spacing + "  ")
-    print (spacing + 'FALSE')
+    print (spacing + '> NO ')
     printTree(node.falseBranch, spacing + "  ")
 
 def classify(row, node):
@@ -149,9 +149,12 @@ def printLeaf(counts):
 # MAIN
 
 def main():
-    print('----------------------------')
-    print('| DECISION TREE VISUALIZER |')
-    print('----------------------------')
+    print('')
+    print('####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####')
+    print('#   #  #      #      #  #      #  #   #  ##   #       #    #   #  #      #    ')
+    print('#   #  ###    #      #  #####  #  #   #  # #  #       #    ###    ###    ###  ')
+    print('#   #  #      #      #      #  #  #   #  #  # #       #    #  #   #      #    ')
+    print('####   #####  #####  #  #####  #  #####  #   ##       #    #   #  #####  #####')
 
     # csv file selection by user
     filename = getUserInput('>>> Import your csv file (filename.csv) :')
@@ -160,11 +163,11 @@ def main():
     # importing csv
     impCSV = pd.read_csv(filename, header=0)
     # printing csv details
-    print('Imported Data Head : ')
+    print('Imported Data Head')
     print(impCSV.head())
-    print('Imported Data Shape (rows, cols) : ', end = '')
+    print('Imported Data Shape    ', end = '')
     print(impCSV.shape)
-    print('Imported Data columns : ', end = '')
+    print('Imported Data Columns  ', end = '')
     impColNames = list(impCSV.columns)
     print(impColNames)
 
@@ -178,6 +181,12 @@ def main():
     # Creating tree
     my_tree = buildTree(impCSV, targetId)
     # Printing tree
+    print('#   #  #####  #    #  ####    #####  ####   #####  #####')
+    print(' # #   #   #  #    #  #   #     #    #   #  #      #    ')
+    print('  #    #   #  #    #  ###       #    ###    ###    ###  ')
+    print('  #    #   #  #    #  #  #      #    #  #   #      #    ')
+    print('  #    #####  ######  #   #     #    #   #  #####  #####')
+    print('')
     printTree(my_tree)
 
     #####
