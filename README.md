@@ -1,4 +1,4 @@
-# Handmade Decision Tree :evergreen_tree: :star: :evergreen_tree:
+# Handmade Decision Tree :seedling: :herb: :evergreen_tree: :christmas_tree:
 
 ## Project Details
 This short python script enables to quickly generate and visualize a decision tree generated from a training data set. Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations.
