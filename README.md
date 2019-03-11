@@ -47,8 +47,10 @@ This short python script enables to quickly generate and visualize a decision tr
     |   Prediction(s) - {'Grape': '100 %'}
 
 ### Enhancements
-* Test decision tree after creation with testing data set
-* Calculate tree model efficiency
+Test decision tree after creation with testing data set   
+Calculate tree model efficiency   
+
+******
 
 #### Credits
 ##### https://www.youtube.com/watch?v=LDRbO9a6XPU&t=43s   
