@@ -46,10 +46,10 @@ This short python script enables to quickly generate and visualize a decision tr
     | > NO
     |   Prediction(s) - {'Grape': '100 %'}
 
-## Possible Enhancements
+### Enhancements
 * Test decision tree after creation with testing data set
 * Calculate tree model efficiency
 
-### Credits
-https://www.youtube.com/watch?v=LDRbO9a6XPU&t=43s   
-https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb   
+#### Credits
+##### https://www.youtube.com/watch?v=LDRbO9a6XPU&t=43s   
+##### https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb   
