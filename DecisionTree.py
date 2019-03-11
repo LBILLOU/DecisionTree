@@ -44,7 +44,7 @@ class Question():
         if isinstance(self.value, int) or isinstance(self.value, float):
             operator = '>='
         else: operator = '=='
-        return "> Is %s %s %s?" % (self.columnName, operator, str(self.value))
+        return "*-> Is %s %s %s?" % (self.columnName, operator, str(self.value))
 
     def match(self, dataf):
         # Function to evaluate dataframe single row with question
@@ -128,15 +128,15 @@ def buildTree(dataf, targetId):
     falseBranch = buildTree(falseRows, targetId)
     return Node(question, trueBranch, falseBranch)
 
-def printTree(node, spacing = "|"):
+def printTree(node, spacing = ""):
     # Function to print a generated tree
     if isinstance(node, Leaf):
-        print(spacing + "--> Prediction(s) -", node.predictions)
+        print(spacing[:-4].replace('-', ' ') + "    Prediction(s) -", node.predictions)
         return
-    print (spacing + str(node.question))
-    print (spacing + '> YES ')
-    printTree(node.trueBranch, spacing + "----")
-    print (spacing + '> NO  ')
+    print (spacing.replace('-', ' ') + str(node.question))
+    print (spacing.replace('-', ' ') + '*-> YES ')
+    printTree(node.trueBranch, spacing + "*---")
+    print (spacing.replace('-', ' ') + '*-> NO  ')
     printTree(node.falseBranch, spacing + "----")
 
 def classify(row, node):
@@ -168,7 +168,7 @@ def main():
     # csv file selection by user
     filename = getUserInput('>>> Import your csv file (filename.csv) :')
     while os.path.isfile(filename) is False:
-        filename = getUserInput('>>> Error, file not found. Please try again :')
+        filename = getUserInput('>>> ERROR, file not found. Please try again :')
     # importing csv
     impCSV = pd.read_csv(filename, header=0)
     # printing csv details
@@ -183,15 +183,18 @@ def main():
     # target selection by user
     userTarget = getUserInput('>>> Which column from the above would you like to predict?')
     while userTarget not in impColNames:
-        userTarget = getUserInput('>>> Error, Please choose a column you like to predict from the following list: ' + str(print(impColNames)))
+        userTarget = getUserInput('>>> ERROR, Please choose a column you like to predict from the following list: ' + str(impColNames))
     # retreving target column id
     targetId = impCSV.columns.get_loc(userTarget)
 
     # Creating tree
     startTime = datetime.now()
+    print('Decision Tree creation in progress...')
     my_tree = buildTree(impCSV, targetId)
     elapsedTime = datetime.now() - startTime
-    print(str(elapsedTime))
+    print('Time to create Decision Tree : ' + str(elapsedTime))
+    print('')
+
     # Printing tree
     os.system('clear ')
     print('#   #  #####  #    #  ####    #####  ####   #####  #####')

@@ -47,9 +47,9 @@ This short python script enables to quickly generate and visualize a decision tr
     |     Prediction(s) - {'Grape': '100 %'}
 
 ### Enhancements
-Test decision tree after creation with testing data set ('classify' function already created)   
-Calculate tree model efficiency with testing data   
-Optimize 'findBestQuestion' for large data sets and/or continuous values
+Test decision tree after creation with testing data set ('classify' function already created).   
+Calculate tree model efficiency with testing data.   
+Optimize 'findBestQuestion' for large data sets and/or continuous values.   
 
 ******
 
