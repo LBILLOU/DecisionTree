@@ -43,7 +43,7 @@ class Question():
         if isinstance(self.value, int) or isinstance(self.value, float):
             operator = '>='
         else: operator = '=='
-        return "Is %s %s %s ?" % (self.columnName, operator, str(self.value))
+        return "Is %s %s %s?" % (self.columnName, operator, str(self.value))
 
     def match(self, dataf):
         # Function to evaluate dataframe single row with question
@@ -130,12 +130,12 @@ def buildTree(dataf, targetId):
 def printTree(node, spacing = ""):
     # Function to print a generated tree
     if isinstance(node, Leaf):
-        print("> Prediction(s) -", node.predictions)
+        print(spacing[:-2] + "  Prediction(s) -", node.predictions)
         return
     print (spacing + str(node.question))
-    print (spacing + '> YES ', end = '')
+    print (spacing + '> YES ')
     printTree(node.trueBranch, spacing + "  ")
-    print (spacing + '> NO  ', end = '')
+    print (spacing + '> NO  ')
     printTree(node.falseBranch, spacing + "  ")
 
 def classify(row, node):
@@ -198,12 +198,6 @@ def main():
     print('')
     printTree(my_tree)
 
-    #####
-    #print("> Function *** testTree")
-    #test = classify(impCSV.loc[2,:].to_frame().transpose(), my_tree)
-    #print("out --> " + str(test))
-    #print(type(test))
-    ####
 
 main()
 
@@ -261,3 +255,8 @@ main()
 
 #print("> Function *** printTree")
 #printTree(my_tree)
+
+#print("> Function *** testTree")
+#test = classify(impCSV.loc[2,:].to_frame().transpose(), my_tree)
+#print("out --> " + str(test))
+#print(type(test))
