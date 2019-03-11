@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from datetime import datetime
 
 def getUserInput(question):
     # Funtion to retrieve input from user by asking an appropriate question
@@ -43,7 +44,7 @@ class Question():
         if isinstance(self.value, int) or isinstance(self.value, float):
             operator = '>='
         else: operator = '=='
-        return "Is %s %s %s?" % (self.columnName, operator, str(self.value))
+        return "> Is %s %s %s?" % (self.columnName, operator, str(self.value))
 
     def match(self, dataf):
         # Function to evaluate dataframe single row with question
@@ -127,16 +128,16 @@ def buildTree(dataf, targetId):
     falseBranch = buildTree(falseRows, targetId)
     return Node(question, trueBranch, falseBranch)
 
-def printTree(node, spacing = ""):
+def printTree(node, spacing = "|"):
     # Function to print a generated tree
     if isinstance(node, Leaf):
-        print(spacing[:-2] + "  Prediction(s) -", node.predictions)
+        print(spacing + "--> Prediction(s) -", node.predictions)
         return
     print (spacing + str(node.question))
     print (spacing + '> YES ')
-    printTree(node.trueBranch, spacing + "  ")
+    printTree(node.trueBranch, spacing + "----")
     print (spacing + '> NO  ')
-    printTree(node.falseBranch, spacing + "  ")
+    printTree(node.falseBranch, spacing + "----")
 
 def classify(row, node):
     #Function to test a tree
@@ -187,7 +188,10 @@ def main():
     targetId = impCSV.columns.get_loc(userTarget)
 
     # Creating tree
+    startTime = datetime.now()
     my_tree = buildTree(impCSV, targetId)
+    elapsedTime = datetime.now() - startTime
+    print(str(elapsedTime))
     # Printing tree
     os.system('clear ')
     print('#   #  #####  #    #  ####    #####  ####   #####  #####')
