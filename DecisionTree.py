@@ -23,6 +23,14 @@ def countValues(dataf, targetId):
         output[value] += 1
     return output
 
+def countValuesPercentages(countValues):
+    # Function that transforms countValues output into percentages
+    sum = 0
+    for value in countValues:
+        sum += countValues[value]
+    for value in countValues:
+        countValues[value] = str(int(countValues[value] / sum * 100)) + ' %'
+    return countValues
 
 class Question():
     def __init__(self, columnId, value, dataf):
@@ -101,7 +109,7 @@ def findBestQuestion(dataf, targetId):
 
 class Leaf:
     def __init__(self, dataf, targetId):
-        self.predictions = countValues(dataf, targetId)
+        self.predictions = countValuesPercentages(countValues(dataf, targetId))
 
 class Node:
     def __init__(self, question, trueBranch, falseBranch):
@@ -122,12 +130,12 @@ def buildTree(dataf, targetId):
 def printTree(node, spacing = ""):
     # Function to print a generated tree
     if isinstance(node, Leaf):
-        print(spacing + "Prediction >", node.predictions)
+        print("> Prediction(s) -", node.predictions)
         return
     print (spacing + str(node.question))
-    print (spacing + '> YES')
+    print (spacing + '> YES ', end = '')
     printTree(node.trueBranch, spacing + "  ")
-    print (spacing + '> NO ')
+    print (spacing + '> NO  ', end = '')
     printTree(node.falseBranch, spacing + "  ")
 
 def classify(row, node):
@@ -149,7 +157,7 @@ def printLeaf(counts):
 # MAIN
 
 def main():
-    print('')
+    os.system('clear ')
     print('####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####')
     print('#   #  #      #      #  #      #  #   #  ##   #       #    #   #  #      #    ')
     print('#   #  ###    #      #  #####  #  #   #  # #  #       #    ###    ###    ###  ')
@@ -181,6 +189,7 @@ def main():
     # Creating tree
     my_tree = buildTree(impCSV, targetId)
     # Printing tree
+    os.system('clear ')
     print('#   #  #####  #    #  ####    #####  ####   #####  #####')
     print(' # #   #   #  #    #  #   #     #    #   #  #      #    ')
     print('  #    #   #  #    #  ###       #    ###    ###    ###  ')
@@ -207,6 +216,9 @@ main()
 #print("> Function *** countValues")
 #print("out --> " + str(countValues(impCSV, targetId)))
 #print(type(countValues(impCSV, targetId)))
+
+#print("> Function *** countValuesPercentages")
+#print("out --> " + str(countValuesPercentages(countValues(impCSV, targetId))))
 
 #print("> Class *** Question")
 #q = Question(0, 'Green')
