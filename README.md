@@ -10,6 +10,8 @@ This short python script enables to quickly generate and visualize a decision tr
 
 ## Example
 
+Example using sample.csv ::
+
   & ####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####
   & #   #  #      #      #  #      #  #   #  ##   #       #    #   #  #      #
   & #   #  ###    #      #  #####  #  #   #  # #  #       #    ###    ###    ###
