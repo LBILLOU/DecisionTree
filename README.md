@@ -4,8 +4,9 @@
 This short python script enables to quickly generate and visualize a decision tree generated from a training data set. Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations. Works well with small data sets with limited categorical values.
 
 ## Execution
-    Git clone
-    Python3 DecisionTree.py
+    git clone
+    pip3 install -r requirements.txt
+    python3 DecisionTree.py
 
 ## Example
     |    ####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####
