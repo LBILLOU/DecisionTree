@@ -8,7 +8,7 @@ This short python script enables to quickly generate and visualize a decision tr
     Python3 DecisionTree.py
 
 ## Example
-    |
+    |    ####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####
     |    #   #  #      #      #  #      #  #   #  ##   #       #    #   #  #      #
     |    #   #  ###    #      #  #####  #  #   #  # #  #       #    ###    ###    ###
     |    #   #  #      #      #      #  #  #   #  #  # #       #    #  #   #      #
@@ -32,6 +32,7 @@ This short python script enables to quickly generate and visualize a decision tr
     |
     |    Decision Tree creation in progress...
     |    Time to create Decision Tree : 0:00:48.427337
+    |
     |
     |    #   #  #####  #    #  ####    #####  ####   #####  #####
     |     # #   #   #  #    #  #   #     #    #   #  #      #
