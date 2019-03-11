@@ -32,6 +32,8 @@ This short python script enables to quickly generate and visualize a decision tr
     |
     |    Decision Tree creation in progress...
     |    Time to create Decision Tree : 0:00:48.427337
+    |    Decision tree created from 'iris.csv'
+    |    Target variable is 'species'
     |
     |
     |    #   #  #####  #    #  ####    #####  ####   #####  #####
@@ -39,7 +41,7 @@ This short python script enables to quickly generate and visualize a decision tr
     |      #    #   #  #    #  ###       #    ###    ###    ###
     |      #    #   #  #    #  #  #      #    #  #   #      #
     |      #    #####  ######  #   #     #    #   #  #####  #####
-    |    
+    |
     |    #-> Is petal_width >= 1.0?
     |    #-> YES
     |    #   #-> Is petal_width >= 1.8?
@@ -78,6 +80,7 @@ This short python script enables to quickly generate and visualize a decision tr
 Test decision tree after creation with testing data set ('classify' function already created).   
 Calculate tree model efficiency with testing data.   
 Optimize 'findBestQuestion' for large data sets and/or continuous values.   
+Flake8 script.
 
 ******
 

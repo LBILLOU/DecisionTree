@@ -193,6 +193,8 @@ def main():
     my_tree = buildTree(impCSV, targetId)
     elapsedTime = datetime.now() - startTime
     print('Time to create Decision Tree : ' + str(elapsedTime))
+    print("Decision tree created from '" + str(filename) + "'")
+    print("Target variable is '" + str(userTarget) + "'")
     print('')
 
     # Printing tree
@@ -208,7 +210,6 @@ def main():
 
 
 main()
-
 
 
 #print("> Function *** uniqueValues")
