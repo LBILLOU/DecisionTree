@@ -1,7 +1,7 @@
 # Handmade Decision Tree :herb:
 
 ## Project Details
-This short python script enables to quickly generate and visualize a decision tree generated from a training data set. Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations.
+This short python script enables to quickly generate and visualize a decision tree generated from a training data set. Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations. Works well with small data sets with limited categorical values.
 
 ## Execution
     Git clone
@@ -49,6 +49,7 @@ This short python script enables to quickly generate and visualize a decision tr
 ### Enhancements
 Test decision tree after creation with testing data set ('classify' function already created)   
 Calculate tree model efficiency with testing data   
+Optimize 'findBestQuestion' for large data sets and/or continuous values
 
 ******
 
