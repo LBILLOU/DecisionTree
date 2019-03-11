@@ -6,8 +6,8 @@
 
 ## Project Details
 
-This short python script enables to quickly generate and visualize a decision tree generated from a training data set.
-Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations.
+This short python script enables to quickly generate and visualize a decision tree generated from a training data set.   
+Using dataframes from pandas, the scripts creates new branches by maximizing information gain from gini impurity calculations.   
 
 ## Example
     | ####   #####  #####  #  #####  #  #####  #    #     #####  ####   #####  #####
