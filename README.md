@@ -18,15 +18,15 @@ This short python script enables to quickly generate and visualize a decision tr
     |   >>> Import your csv file (filename.csv) :
     |   sample.csv
     |
-    |   Imported Data Head
+    |   > Imported Data Head
     |       color  size  label
     |   0   Green     3  Apple
     |   1  Yellow     3  Apple
     |   2     Red     1  Grape
     |   3     Red     1  Grape
     |   4  Yellow     3  Lemon
-    |   Imported Data Shape    (5, 3)
-    |   Imported Data Columns  ['color', 'size', 'label']
+    |   > Imported Data Shape    (5, 3)
+    |   > Imported Data Columns  ['color', 'size', 'label']
     |  
     |   >>> Which column from the above would you like to predict?
     |   label

@@ -171,11 +171,11 @@ def main():
     # importing csv
     impCSV = pd.read_csv(filename, header=0)
     # printing csv details
-    print('Imported Data Head')
+    print('> Imported Data Head')
     print(impCSV.head())
-    print('Imported Data Shape    ', end = '')
+    print('> Imported Data Shape    ', end = '')
     print(impCSV.shape)
-    print('Imported Data Columns  ', end = '')
+    print('> Imported Data Columns  ', end = '')
     impColNames = list(impCSV.columns)
     print(impColNames)
 
