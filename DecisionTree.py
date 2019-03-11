@@ -204,6 +204,7 @@ def main():
     print('  #    #####  ######  #   #     #    #   #  #####  #####')
     print('')
     printTree(my_tree)
+    print('')
 
 
 main()
